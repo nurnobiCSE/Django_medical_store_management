@@ -6,8 +6,8 @@ from pharma import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('pharma/', include('pharma.urls')),
-    path('', views.home, name='index'),
+    path('', include('pharma.urls')),
+    
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -124,7 +124,7 @@ MESSAGE_TAGS = {
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS =[BASE_DIR / 'static']
+# STATICFILES_DIRS =[BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'static_root/'
  
 MEDIA_URL = '/media/'
@@ -134,7 +134,9 @@ MEDIA_ROOT = BASE_DIR / 'media_root'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
  
- 
-
- 
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = '/'

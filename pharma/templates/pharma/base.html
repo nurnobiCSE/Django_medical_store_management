@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'pharma/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'pharma/css/bootstrap-theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'pharma/css/style.css' %}">
+    <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"
+            integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'pharma/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pharma/js/bootstrap4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pharma/js/npm.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pharma/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pharma/js/script.js' %}"></script>
+    <title>MSMS</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="{% url 'index' %}" class="navbar-brand"><span
+                    class="glyphicon glyphicon glyphicon-home"></span>&nbsp;HOME</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#thisnav">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="thisnav">
+            <ul class="nav navbar-nav">
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dealer Management<b
+                        class="caret"></b></a>
+                    <ul id="dealer-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="{% url 'dealerform' %}">Add Dealer Details</a></li>
+                        <li><a href="{% url 'dealertable' %}">View Dealer Details</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Medicine Management<b
+                        class="caret"></b></a>
+                    <ul id="med-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="{% url 'medform' %}">Add Medicine Details</a></li>
+                        <li><a href="{% url 'medtable' %}">View Medicine Details</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee Management<b
+                        class="caret"></b></a>
+                    <ul id="emp-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="{% url 'empform' %}">Add Employee Details</a></li>
+                        <li><a href="{% url 'emptable' %}">View Employee Details</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer Management<b
+                        class="caret"></b></a>
+                    <ul id="cust-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="{% url 'custform' %}">Add Customer Details</a></li>
+                        <li><a href="{% url 'custtable' %}">View Customer Details</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Purchase Information<b
+                        class="caret"></b></a>
+                    <ul id="cust-menu" class="dropdown-menu inverse-dropdown">
+                        <li><a href="{% url 'purchaseform' %}">New Purchase</a></li>
+                        <li><a href="{% url 'purchasetable' %}">View All Purchases</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{% url 'logout' %}"
+                    ><i class="fa fa-sign-out fa-lg"></i> Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% block bodyConetent %}
+
+{% endblock bodyConetent %}
+
+<footer id="contact" class="container-fluid text-center">
+    <div class="row">
+        <div class="left-footer col-lg-10">
+            <span class="footer-text">This application developed by students of BUBT, intake:33 department of CSE</span> 
+            <i> { Nahida , Helal, Chanchal }</i>
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="right-footer col-lg-2">
+               
+            <span>-</span>
+            <span class="linkto" data-toggle="modal" data-target="#modalContactForm"><i
+                    class="fa fa-envelope prefix mr-1"></i> Contact Us</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -2,12 +2,14 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='index'),
-
+    path('', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout'),
+    path('home/', views.home, name='index'),
+    
     path('dealerform/', views.dealerform, name="dealerform"),
     path('dealerformupdate/<int:foo>/', views.dealerformupdate, name="dealerformupdate"),
     path('dealerforminsert/', views.dealerforminsert, name="dealerforminsert"),
-    path('dealerformview/<int:foo>/', views.dealerformview, name="dealerformview"),
+    path('dealerformview/<int:foo>', views.dealerformview, name="dealerformview"),
     path('dealerformdelete/<int:foo>/', views.dealerformdelete, name="dealerformdelete"),
     path('dealertable/', views.dealertable, name='dealertable'),
 

@@ -1,78 +1,7 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'pharma/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'pharma/css/bootstrap-theme.min.css' %}">
-    <link rel="stylesheet" href="{% static 'pharma/css/style.css' %}">
-    <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"
-            integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy"
-            crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'pharma/js/jquery.js' %}"></script>
-    <script type="text/javascript" src="{% static 'pharma/js/bootstrap4.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'pharma/js/npm.js' %}"></script>
-    <script type="text/javascript" src="{% static 'pharma/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'pharma/js/script.js' %}"></script>
-    <title>All Employee Details</title>
-</head>
-<body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="/pharma/" class="navbar-brand"><span
-                    class="glyphicon glyphicon glyphicon-home"></span>&nbsp;HOME</a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#thisnav">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse" id="thisnav">
-            <ul class="nav navbar-nav">
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dealer Management<b
-                        class="caret"></b></a>
-                    <ul id="dealer-menu" class="dropdown-menu inverse-dropdown">
-                        <li><a href="/pharma/dealerform/">Add Dealer Details</a></li>
-                        <li><a href="/pharma/dealertable/">View Dealer Details</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Medicine Management<b
-                        class="caret"></b></a>
-                    <ul id="med-menu" class="dropdown-menu inverse-dropdown">
-                        <li><a href="/pharma/medform/">Add Medicine Details</a></li>
-                        <li><a href="/pharma/medtable/">View Medicine Details</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee Management<b
-                        class="caret"></b></a>
-                    <ul id="emp-menu" class="dropdown-menu inverse-dropdown">
-                        <li><a href="/pharma/empform/">Add Employee Details</a></li>
-                        <li><a href="/pharma/emptable/">View Employee Details</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer Management<b
-                        class="caret"></b></a>
-                    <ul id="cust-menu" class="dropdown-menu inverse-dropdown">
-                        <li><a href="/pharma/custform/">Add Customer Details</a></li>
-                        <li><a href="/pharma/custtable/">View Customer Details</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Purchase Information<b
-                        class="caret"></b></a>
-                    <ul id="cust-menu" class="dropdown-menu inverse-dropdown">
-                        <li><a href="/pharma/purchaseform/">New Purchase</a></li>
-                        <li><a href="/pharma/purchasetable/">View All Purchases</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+{% extends 'pharma/base.html' %}
+{% block bodyConetent %}
 <div class="modal fade" id="modalContactForm" tabindex="-1">
-    <form action="https://formspree.io/soham5959595@gmail.com" method="post">
+    <form action="" method="post">
         {% csrf_token %}
         <div class="modal-dialog">
             <div class="modal-content">
@@ -84,11 +13,13 @@
                 </div>
                 <div class="modal-body mx-3">
                     <div class="md-form">
-                        <i class="fa fa-user prefix grey-text"></i><label class="modaltext" for="form34"> Your name</label>
+                        <i class="fa fa-user prefix grey-text"></i><label class="modaltext" for="form34"> Your
+                            name</label>
                         <input type="text" id="form34" name="cu-name" class="form-control validate">
                     </div>
                     <div class="md-form">
-                        <i class="fa fa-envelope prefix grey-text"></i><label class="modaltext" for="form29"> Your email</label>
+                        <i class="fa fa-envelope prefix grey-text"></i><label class="modaltext" for="form29"> Your
+                            email</label>
                         <input type="email" id="form29" name="cu-mail" class="form-control validate">
                     </div>
                     <div class="md-form">
@@ -96,9 +27,10 @@
                         <input type="text" id="form32" name="cu-subject" class="form-control validate">
                     </div>
                     <div class="md-form">
-                        <i class="fas fa-pencil-alt prefix grey-text"></i><label class="modaltext" for="form8"> Your message</label>
+                        <i class="fas fa-pencil-alt prefix grey-text"></i><label class="modaltext" for="form8"> Your
+                            message</label>
                         <textarea type="text" id="form8" name="cu-message" class="md-textarea form-control"
-                                  rows="4"></textarea>
+                            rows="4"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
@@ -124,37 +56,88 @@
                     <th>Phone Number</th>
                     <th>Email</th>
                     <th>Salary</th>
+                    <th>Action</th>
                 </tr>
                 {% for foo in emp %}
-                    <tr>
-                        <td class="idlink"><a href="/pharma/empformview/{{ foo.id }}/">{{ foo.e_id }}</a></td>
-                        <td>{{ foo.fname }}</td>
-                        <td>{{ foo.lname }}</td>
-                        <td>{{ foo.address }}</td>
-                        <td>{{ foo.phn_no }}</td>
-                        <td>{{ foo.email }}</td>
-                        <td>{{ foo.sal }}</td>
-                    </tr>
+                <tr>
+                    <td class="idlink">{{ foo.e_id }}</td>
+                    <td>{{ foo.fname }}</td>
+                    <td>{{ foo.lname }}</td>
+                    <td>{{ foo.address }}</td>
+                    <td>{{ foo.phn_no }}</td>
+                    <td>{{ foo.email }}</td>
+                    <td>{{ foo.sal }}</td>
+                    <td style="background-color: cornflowerblue;"><a style=" color: white" href="/empformview/{{ foo.id }}">Edit/Delete</a></td> 
+                </tr>
                 {% endfor %}
-            </table>
+            </table> <br>
+            <a href="#"><button class="btn btn-primary" onclick="EmployexportSheet()">Download Dealer Sheet</button></a>
         </div>
-        <footer><h3>Click on an Employee ID to Update or Delete the record.</h3></footer>
+        <footer>
+            <h3>Click on an Employee ID to Update or Delete the record.</h3>
+        </footer>
     </div>
 </div>
-<footer id="contact" class="container-fluid text-center">
-    <div class="row">
-        <div class="left-footer col-lg-6">
-            <span class="footer-text">Have any queries? Contact us via email or call or Whatsapp  us on +91 6263056779.</span>
-        </div>
-        <div class="col-lg-4"></div>
-        <div class="right-footer col-lg-2">
-                <span class="linkto" onclick=" window.open('https://projectworlds.in/', '_blank'); return false;"><i
-                        class="fab fa-globe-square prefix mr-1"></i> Projectworlds</span>
-            <span>-</span>
-            <span class="linkto" data-toggle="modal" data-target="#modalContactForm"><i
-                    class="fa fa-envelope prefix mr-1"></i> Contact Us</span>
-        </div>
-    </div>
-</footer>
-</body>
-</html>
+<script type="text/javascript">
+    function EmployexportSheet() {
+
+        // Variable to store the final csv data
+        var csv_data = [];
+
+        // Get each row data
+        var rows = document.getElementsByTagName('tr');
+        for (var i = 0; i < rows.length; i++) {
+
+            // Get each column data
+            var cols = rows[i].querySelectorAll('td,th');
+
+            // Stores each csv row data
+            var csvrow = [];
+            for (var j = 0; j < cols.length; j++) {
+
+                // Get the text data of each cell
+                // of a row and push it to csvrow
+                csvrow.push(cols[j].innerHTML);
+            }
+
+            // Combine each column value with comma
+            csv_data.push(csvrow.join(","));
+        }
+
+        // Combine each row data with new line character
+        csv_data = csv_data.join('\n');
+
+        // Call this function to download csv file  
+        downloadCSVFile(csv_data);
+
+    }
+
+    function downloadCSVFile(csv_data) {
+
+        // Create CSV file object and feed
+        // our csv_data into it
+        CSVFile = new Blob([csv_data], {
+            type: "text/csv"
+        });
+
+        // Create to temporary link to initiate
+        // download process
+        var temp_link = document.createElement('a');
+
+        // Download csv file
+        temp_link.download = "report.csv";
+        var url = window.URL.createObjectURL(CSVFile);
+        temp_link.href = url;
+
+        // This link should not be displayed
+        temp_link.style.display = "none";
+        document.body.appendChild(temp_link);
+
+        // Automatically click the link to
+        // trigger download
+        temp_link.click();
+        document.body.removeChild(temp_link);
+    }
+
+</script>
+{% endblock bodyConetent %}
